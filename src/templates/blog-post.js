@@ -133,4 +133,3 @@ export const pageQuery = graphql`
 `
 
 export default BlogPostTemplate
-
