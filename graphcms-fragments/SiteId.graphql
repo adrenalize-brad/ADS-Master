@@ -1,0 +1,21 @@
+fragment SiteId on SiteId {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  logo {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
+  favicon {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
+}
