@@ -1,60 +1,77 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
+import Footer from '../components/footer'
 
 function BlogPage({ data: { allGraphCmsPost } }) {
+
   return (
-    <div className="divide-y divide-gray-200">
-      <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-        <h1 className="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Latest
+
+    <div className="divide-y divide-gray-500">
+      
+      <div className="section-header pb-5">
+        <h1>
+          Our Blog
         </h1>
-        <p className="text-lg leading-7 text-gray-500">
-          Our latest blog posts.
-        </p>
+        <h3>
+          aka whats good
+        </h3>
       </div>
 
-      <ul className="divide-y divide-gray-200">
+      <div className="post-list py-2">
+
+        <div className="wrapper">
+
         {allGraphCmsPost.nodes.map((post) => {
+
           return (
-            <li key={post.id} className="py-12">
-              <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-                <dl>
-                  <dt className="sr-only">Published on</dt>
-                  <dd className="text-base leading-6 font-medium text-gray-500">
-                    <time dateTime={post.date}>{post.date}</time>
-                  </dd>
-                </dl>
-                <div className="space-y-5 xl:col-span-3">
-                  <div className="space-y-6">
-                    <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                      <Link
-                        to={`/posts/${post.slug}`}
-                        className="text-gray-900"
-                      >
-                        {post.title}
-                      </Link>
-                    </h2>
-                    {post.excerpt && (
-                      <div className="prose max-w-none text-gray-500">
-                        {post.excerpt}
-                      </div>
-                    )}
-                  </div>
-                  <div className="text-base leading-6 font-medium">
-                    <Link
-                      to={`/posts/${post.slug}`}
-                      className="text-purple-500 hover:text-purple-600"
-                      aria-label={`Read "${post.title}"`}
-                    >
-                      Read more &rarr;
-                    </Link>
-                  </div>
+
+            <article key={post.id} className="item">       
+
+              <div className="image">
+                <Link to={`/posts/${post.slug}`} >
+                  <Img fluid={post.coverImage.localFile.childImageSharp.fluid}  className="post-image" />
+                </Link>
+              </div>
+
+              <div className="content">
+
+                <div className="header">
+
+                  <Link to={`/posts/${post.slug}`} > <h2>{post.title}</h2></Link>
+
+                  <time dateTime={post.date}><p>{post.date}</p></time>
+
                 </div>
-              </article>
-            </li>
+
+                <div className="excerpt">
+
+                  {post.excerpt && (
+                    <div>
+                      <p>{post.excerpt}</p>
+                    </div>
+                  )}
+
+                </div>
+
+                <div className="link">
+                  <Link to={`/posts/${post.slug}`} aria-label={`Read "${post.title}"`} className="button">
+                    Read More
+                  </Link>   
+                </div>
+
+              </div>
+
+            </article>
+                 
           )
         })}
-      </ul>
+
+      </div>
+      </div>
+
+      <Footer/>
+      
     </div>
   )
 }
@@ -68,6 +85,15 @@ export const indexPageQuery = graphql`
         excerpt
         slug
         title      
+        coverImage {
+          localFile {
+            childImageSharp {
+              fluid{
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
   }
