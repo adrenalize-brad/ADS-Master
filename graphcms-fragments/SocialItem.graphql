@@ -7,4 +7,5 @@ fragment SocialItem on SocialItem {
   title
   url
   iconCode
+  classNames
 }

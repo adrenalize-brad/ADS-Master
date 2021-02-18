@@ -1,0 +1,26 @@
+fragment Service on Service {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  slug
+  tagline
+  key
+  image {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
+  content {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
+}

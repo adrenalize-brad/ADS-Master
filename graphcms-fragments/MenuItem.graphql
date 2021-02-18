@@ -1,5 +1,4 @@
 fragment MenuItem on MenuItem {
-  id
   stage
   remoteId: id
   createdAt
@@ -7,10 +6,5 @@ fragment MenuItem on MenuItem {
   publishedAt
   title
   slug
-  menu {
-    ... on Menu {
-      remoteTypeName: __typename
-      remoteId: id
-    }
-  }
+  iconCode
 }

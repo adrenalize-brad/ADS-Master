@@ -1,0 +1,30 @@
+fragment PortfolioItem on PortfolioItem {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  excerpt {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
+  logo {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
+  backgroundImage {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
+}
