@@ -25,13 +25,15 @@
     "gatsby-plugin-sharp": "2.6.39",
     "gatsby-source-graphcms": "2.0.0-next.11",
     "gatsby-transformer-sharp": "2.5.17",
+    "primereact": "^6.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
+    "react-reveal": "^1.2.2",
     "react-scroll": "^1.8.1",
+    "react-share": "^4.3.1",
     "react-transition-group": "4.4.1",
-    "sass": "^1.32.6",
-    "simple-react-lightbox": "^3.6.1"
+    "sass": "^1.32.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "0.2.0",
